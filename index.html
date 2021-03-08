@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solpak WorkSchedule</title>
+  <link rel = "preconnect" href = "https://fonts.gstatic.com">
+  <link href = "https://fonts.googleapis.com/css2? family = Roboto & display = swap" rel = "hoja de estilo ">     
+  <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="alertifyjs/css/alertify.css">
+  <link rel="stylesheet" type="text/css" href="alertifyjs/css/themes/default.css">
+  <link rel="icon" type="image/png" href="images/Solpak-icon.png">
+  <script src="js/jquery-3.5.1.js"></script>
+  <script src="alertifyjs/alertify.js"></script>
+  <script src="https://api.bitrix24.com/api/v1/"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src="js/app.js"></script>
+</head>
+<body>
+  <main>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-6 login-section-wrapper" id="container-right">
+          <div class="brand-wrapper">
+            <img src="images/logo.png" alt="logo" class="logo">
+          </div>
+          <div class="login-wrapper mb-auto">
+            <h1 class="login-title">Registro</h1>
+            <form action="#!">
+              <div class="form-group mb-4">
+                  <input type="text" name="cedula" id="cedula" class="form-control" placeholder="Ingrese su ID">
+              </div>
+              <button type="button" id="btn-ingresar" class="btn btn-outline-secondary btn-lg" >Ingresar</button>
+            </form>
+          </div>
+        </div>
+        <div class="col-sm-6 px-0 d-none d-sm-block container-left">
+          <div class="container-loading" id="container-loading">
+            <img src="images/load1gif.gif" alt="loading imagen" class="loading-img">
+          </div>
+          <img src="images/imgLogin.jpg" alt="login image" class="login-img">
+          <button type="button" id="btn-entrada"  class="btn btn-outline-secondary btn-lg" disabled>Marcar entrada</button>
+          <button type="button" id="btn-salida"  class="btn btn-outline-secondary btn-lg" disabled>Marcar salida</button>
+        </div>
+      </div>
+    </div>
+  </main>
+      <script type="text/javascript">
+        BX24.init(function()
+        {
+        	initializeApp();
+        });
+        
+      </script>
+</body>
+</html>    
