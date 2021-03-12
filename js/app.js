@@ -17,9 +17,9 @@ function accionBotonIngresar(){
 //	console.log("Entra a accion ingresar"); 
 	var txtCedula=document.getElementById("cedula").value;
 	if(validarCampoCedula(txtCedula)){
-		console.log(txtCedula);
+		//console.log(txtCedula);
 		$("#container-loading").show();
-		setTimeout(function(){$("#container-loading").hide();}, 4000);
+		setTimeout(function(){$("#container-loading").hide();}, 3000);
 		validarExistenciaUsuario(txtCedula);
 		limpiarCampos();
 	}
@@ -37,11 +37,11 @@ function validarExistenciaUsuario(txtCedula){
 		{"PERSONAL_MOBILE":txtCedula},
 		function(result){
 			var user = result.data()[0];
-			console.log(user);
+			//console.log(user);
 			if(user){
 				console.log("El usuario se valido");
 
-				habilitarBotones(user.PERSONAL_MOBILE);
+				habilitarBotones(user.ID);
 			}
 			else{
 				console.log("Error validando usuario");
@@ -57,7 +57,7 @@ function accionBotonEntrada(){
 	//Aca va lo de bitrix enviando el registro de entrada
 	if(allowedActions){
 		BX24.callMethod("timeman.open",
-			{"PERSONAL_MOBILE":globalID},
+			{"USER_ID":globalID},
 			function(result){
 				var openUser=result.data().STATUS;
 				//console.log(openUser);
@@ -79,10 +79,10 @@ function accionBotonSalida(){
 	//Aca va lo de bitrix enviando el registro de salida
 	if(allowedActions){
 		BX24.callMethod("timeman.close",
-			{"PERSONAL_MOBILE":globalID},
+			{"USER_ID":globalID},
 			function(result){
 				var closeUser=result.data().STATUS;
-				console.log(closeUser);
+				//console.log(closeUser);
 				if(closeUser=="CLOSED"){
 					alertify.success("Registro de salida exitoso.");
 				}
@@ -98,10 +98,10 @@ function accionBotonSalida(){
 function habilitarBotones(userID){
 	//console.log("Accion habilitar botones");
 	BX24.callMethod("timeman.status",
-		{"PERSONAL_MOBILE":userID},
+		{"USER_ID":userID},
 		function(result){
 			var statusUser=result.data().STATUS;
-			console.log(statusUser);
+			//console.log(statusUser);
 			if(statusUser=="OPENED"){
 				document.getElementById("btn-salida").disabled=false;
 			}
