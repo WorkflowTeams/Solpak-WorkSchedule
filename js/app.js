@@ -34,10 +34,10 @@ function validarExistenciaUsuario(txtCedula){
 	//Aca va lo de bitrix validando que el usuario exista y sacando el user id y guardandolo
 	//en algun lado o devolviendolo
 	BX24.callMethod("user.get",
-		{"PERSONAL_MOBILE":txtCedula},
+		{"SECOND_NAME":txtCedula},
 		function(result){
 			var user = result.data()[0];
-			//console.log(user);
+			console.log(user);
 			if(user){
 				console.log("El usuario se valido");
 
@@ -50,7 +50,6 @@ function validarExistenciaUsuario(txtCedula){
 				globalID="";
 			}
 		});
-	//console.log("entro a vlaidar usuario");
 }
 function accionBotonEntrada(){
 	//console.log("Accion boton entrada");
@@ -60,7 +59,7 @@ function accionBotonEntrada(){
 			{"USER_ID":globalID},
 			function(result){
 				var openUser=result.data().STATUS;
-				//console.log(openUser);
+				console.log(openUser);
 				if(openUser=="OPENED"){
 					alertify.success("Registro de entrada exitoso.");
 				}
